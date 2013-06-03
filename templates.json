@@ -1,0 +1,76 @@
+[{
+  "name": "dom.js",
+  "tags": "client server logicful compile dom",
+  "size": null,
+  "url": "https://github.com/medikoo/domjs"
+}, {
+  "name": "doT.js",
+  "tags": "clientX server logicful speedy compile parts string format",
+  "size": "(2.742k)",
+  "url": "http://olado.github.com/doT/"
+}, {
+  "name": "EJS",
+  "tags": "client server logicful compile parts string format",
+  "size": "(9.8k)",
+  "url": "http://embeddedjs.com/"
+}, {
+  "name": "Handlebars.js",
+  "tags": "client server logicish compile parts string format",
+  "size": null,
+  "url": "http://handlebarsjs.com/"
+}, {
+  "name": "Hogan.js",
+  "tags": "client server logicish compile parts string format",
+  "size": "(2.5k)",
+  "url": "http://twitter.github.com/hogan.js/"
+}, {
+  "name": "ICanHaz.js",
+  "tags": "client logicish parts string format",
+  "size": "(5.445k)",
+  "url": "http://icanhazjs.com/"
+}, {
+  "name": "Jade templates",
+  "tags": "client server logicish compile parts string",
+  "size": "(39.687k)",
+  "url": "https://github.com/visionmedia/jade"
+}, {
+  "name": "JsRender",
+  "tags": "client server logicish compile parts string format",
+  "size": "(30.709k)",
+  "url": "http://borismoore.github.com/jsrender/demos/index.html"
+}, {
+  "name": "Markup.js",
+  "tags": "client server logicish string format",
+  "size": "(5.1k)",
+  "url": "https://github.com/adammark/Markup.js"
+}, {
+  "name": "Microtemplating",
+  "tags": "client server logicful speedy compile parts string",
+  "size": "(1k)",
+  "url": "http://ejohn.org/blog/javascript-micro-templating/"
+}, {
+  "name": "Mustache.js",
+  "tags": "client server logicish parts string format",
+  "size": "(14.513k)",
+  "url": "https://github.com/janl/mustache.js/"
+}, {
+  "name": "Plates.js",
+  "tags": "client server logicless string format",
+  "size": "(10.811k)",
+  "url": "https://github.com/flatiron/plates"
+}, {
+  "name": "pure.js",
+  "tags": "client logicless compile parts dom format",
+  "size": "(11.7k)",
+  "url": "http://beebole.com/pure"
+}, {
+  "name": "Transparency",
+  "tags": "client logicless dom format",
+  "size": "(5.491k)",
+  "url": "http://leonidas.github.com/transparency/"
+}, {
+  "name": "Underscore templates",
+  "tags": "client server logicful compile string format speedy",
+  "size": "(4k)",
+  "url": "http://documentcloud.github.com/underscore/#template"
+}]

@@ -1,46 +1,58 @@
-var chooser = {
-	choices: []
-};
+/* globals angular, console */
 
-$( function () {
-	$( "div.criteria" ).on( "click", "fieldset", function() {
-		var $t = $( this );
-		if ( $t.hasClass( "off" ) ) {
-			$t.removeClass( "off" ).addClass( "on" );
-		} else {
-			$t.addClass( "off" ).removeClass( "on" );
-		}
-	});
-	$( "div.criteria" ).on( "click", "label", function( e ) {
-		e.stopPropagation();
-		var $t = $( this ),
-			cname = $t.find( "input" ).val(),
-			sibs = $t.siblings( "label" ),
-			removeIndex,
-			classes;
-		$( sibs ).each( function() {
-			removeIndex = chooser.choices.indexOf( $( this ).find( "input" ).val() );
-			if ( removeIndex > -1 ) chooser.choices.splice( removeIndex, 1 );
-		});
-		if ( cname.length ) {
-			if ( cname.indexOf( "." ) > -1 ) {
-				$.each( cname.split( "." ), function( i, nm ) {
-					if ( chooser.choices.indexOf( nm ) === -1 ) {
-						chooser.choices.push( nm );
-					}
-				});
-			} else {
-				if ( chooser.choices.indexOf( cname ) === -1 ) {
-					chooser.choices.push( cname );
-				}
-			}
-		}
-		if ( !chooser.choices.length ) { // no filters...
-		  $( "div.engines div").removeClass("remove"); // ...show everything
-		  return;
-		}
-		classes = chooser.choices.join( "." );
-		$( "div.engines div:not(." + classes + ")" ).addClass( "remove" );
-		$( "div.engines div." + classes ).removeClass( "remove" );
-	});
+// note: extract model data from HTML
+// a=[]; $('div.engines div.add').each(function() { var me=$(this); b={name:me.find('h2').html(),tags:me.attr('class'),size:me.find('span').html(),url:me.find('a').attr('href')}; a.push(b) }); JSON.stringify(a);
+
+var app = angular.module('jsTemplates', []);
+
+app.controller('TemplateController', function($scope, $http) {
+  
+  $scope.templates = [];
+  
+  // note: $scope.form contains filter
+  
+  init();
+  
+  function init() {
+    $http.get('templates.json')
+      .success(function(tpls) {
+        $scope.templates = tpls; // push?
+      })
+      .error(function(err) {
+        console.log("ERROR: "+err);
+      });
+  }
+  
+  $scope.update = function() {
+    
+    angular.forEach($scope.templates, function(template) {
+      var toRemove = "";
+      angular.forEach($scope.form, function(active,key) {
+        var lookfor = key;
+        if (typeof(active) === "string") {
+          lookfor = active;
+        }  
+        if (active && template.tags.indexOf(lookfor) === -1) { // not found
+          toRemove = "remove";
+        }
+      });
+      
+      template.remove = toRemove;
+      
+    });
+  }
+
+});
+
+// show nice link
+app.filter('link', function() {
+  return function(input) {
+    if (input.indexOf('github') > -1) {
+      return "github";
+    }
+    if (input.indexOf('blog') > -1) {
+      return "blog post";
+    }
+    return "project";
+  }
 });
